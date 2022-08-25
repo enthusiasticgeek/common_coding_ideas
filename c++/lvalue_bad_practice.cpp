@@ -1,3 +1,4 @@
+//https://www.scaler.com/topics/cpp/lvalue-and-rvalue/
 class A {
     int *arr, size;
     bool flag;
