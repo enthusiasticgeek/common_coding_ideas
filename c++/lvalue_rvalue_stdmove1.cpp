@@ -17,7 +17,7 @@ class A {
         }    
         
         // copy constructor
-        A (const A& temp) {
+        A (const A& temp) noexcept {
             cout<<"Inside copy constructor\n";
             size = temp.size;
             arr = new int[temp.size];
@@ -28,7 +28,7 @@ class A {
         }
         
         // move constructor
-        A (A&& temp) {
+        A (A&& temp) noexcept {
             cout<<"Inside move constructor\n";
             arr = temp.arr;
             size = temp.size;

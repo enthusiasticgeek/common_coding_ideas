@@ -12,7 +12,7 @@ class A {
         }    
         
         // copy constructor
-        A (const A& temp) {
+        A (const A& temp) noexcept {
             size = temp.size;
             arr = new int[temp.size];
             for ( int i = 0; i < temp.size; ++i ) {
@@ -22,7 +22,7 @@ class A {
         }
         
 	// move assignment operator
-	A& operator=(A&& temp) {
+	A& operator=(A&& temp) noexcept {
 	    
 	    // Check against self assignment
 	    if (this != &temp) {

@@ -12,7 +12,7 @@ class A {
         }    
         
         // copy constructor
-        A (const A& temp) {
+        A (const A& temp) noexcept {
             size = temp.size;
             arr = new int[temp.size];
             for ( int i = 0; i < temp.size; ++i ) {

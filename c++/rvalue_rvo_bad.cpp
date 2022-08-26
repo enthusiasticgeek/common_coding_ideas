@@ -14,14 +14,14 @@ class A {
         size = len;
         arr = new int[len];
     }
-    A(const A& temp) {
+    A(const A& temp) noexcept {
         size = temp.size;
         delete [] arr;
         arr = new int[size];
         for(int i=0;i<size;i++)
             arr[i] = temp.arr[i];
     }
-    A(A&& temp) {
+    A(A&& temp) noexcept {
         size = temp.size;
         arr = temp.arr;
         temp.arr = nullptr;
