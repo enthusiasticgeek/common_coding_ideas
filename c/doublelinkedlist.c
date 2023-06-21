@@ -17,8 +17,8 @@ bool delete_node(_node* ptr){
    if(ptr==NULL){
         return false;
    }
-   free(ptr);  
-   return true; 
+   free(ptr);
+   return true;
 }
 
 
@@ -43,6 +43,26 @@ void display_list_prev_from(_node * ptr){
 }
 
 
+//a->b           [ a->next = b ] [ b->prev = a ]
+//a->n->b        [ a->next = n, n->next=b ] [ b->prev = n , n->prev = a ]
+
+
+void add_node_next_after(_node **ptr, _node **ptr_add, _node **newnode, int newdata) {
+  while (*ptr != NULL) {
+    if (*ptr == *ptr_add) {
+      (*newnode)->next = (*ptr)->next;
+      (*newnode)->prev = *ptr;
+      (*newnode)->data = newdata;
+      if ((*ptr)->next != NULL) {
+        (*ptr)->next->prev = *newnode;
+      }
+      (*ptr)->next = *newnode;
+      break;
+    }
+    ptr = &(*ptr)->next;
+  }
+}
+
 
 int main(int argc, char* argv[]){
 
@@ -52,7 +72,8 @@ int main(int argc, char* argv[]){
    _node* second = create_node();
    _node* third = create_node();
    _node* fourth = create_node();
- 
+   _node* somenode = create_node();
+
   //Init the list
    head = first;
    tail = fourth;
@@ -62,13 +83,18 @@ int main(int argc, char* argv[]){
    insert_node(third, 30,second, fourth);
    insert_node(fourth, 40,third, NULL);
 
+   printf("==========\n");
    display_list_next_from(head);
+   add_node_next_after(&head, &second, &somenode, 44);
+   printf("\n==========\n");
+   display_list_next_from(head);
+   printf("\n==========\n");
    display_list_prev_from(tail);
 
    delete_node(first);
    delete_node(second);
    delete_node(third);
    delete_node(fourth);
-
+   delete_node(somenode);
 return 0;
 }
