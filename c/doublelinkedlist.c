@@ -17,8 +17,8 @@ bool delete_node(_node* ptr){
    if(ptr==NULL){
         return false;
    }
-   free(ptr);
-   return true;
+   free(ptr);  
+   return true; 
 }
 
 
@@ -64,6 +64,28 @@ void add_node_next_after(_node **ptr, _node **ptr_add, _node **newnode, int newd
 }
 
 
+//a->n->b        [ a->next = b, b->prev = a ] Then free up in the main () [ n->next = NULL , n->prev = NULL ]
+
+void delete_node_next_after(_node **ptr, _node **ptr_rm) {
+  while (*ptr != NULL) {
+    if (*ptr == *ptr_rm) {
+      if ((*ptr)->next != NULL) {
+        if ((*ptr)->next->next != NULL) {
+           (*ptr)->next->next->prev = *ptr;
+           (*ptr)->next = (*ptr)->next->next;
+           //free heap for these two later in main().
+           //(*ptr)->next->next = NULL;
+           //(*ptr)->next->prev = NULL;
+        }
+      }
+      break;
+    }
+    ptr = &(*ptr)->next;
+  }
+}
+
+
+
 int main(int argc, char* argv[]){
 
    _node* head = NULL;
@@ -73,7 +95,7 @@ int main(int argc, char* argv[]){
    _node* third = create_node();
    _node* fourth = create_node();
    _node* somenode = create_node();
-
+ 
   //Init the list
    head = first;
    tail = fourth;
@@ -90,11 +112,16 @@ int main(int argc, char* argv[]){
    display_list_next_from(head);
    printf("\n==========\n");
    display_list_prev_from(tail);
+   delete_node_next_after(&head, &second);
+   printf("\n==========\n");
+   display_list_next_from(head);
 
    delete_node(first);
    delete_node(second);
    delete_node(third);
    delete_node(fourth);
    delete_node(somenode);
+
 return 0;
 }
+
