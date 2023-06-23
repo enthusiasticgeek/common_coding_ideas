@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
  
 using namespace std;
 class Shape;
@@ -7,9 +8,15 @@ class PaintCost;
 class Shape {
    public:
       void setWidth(int w) {
+        if (w < 0) {
+            throw std::invalid_argument("width cannot be negative.");
+         }
          width = w;
       }
       void setHeight(int h) {
+        if (h < 0) {
+            throw std::invalid_argument("Height cannot be negative.");
+         }
          height = h;
       }
       
@@ -40,6 +47,7 @@ class Rectangle: public virtual Shape, public virtual PaintCost { //avoid diamon
 };
 
 int main(void) {
+try{
    Rectangle* Rect = new Rectangle();
  
    Rect->setWidth(5);
@@ -51,5 +59,10 @@ int main(void) {
    cout << "Total area: " << Rect->getCost(Rect->getArea()) << endl;
 
    delete Rect;
+} catch (const std::exception &e) {
+          std::cerr << "Exception occurred: " << e.what() << std::endl;
+}
    return 0;
 }
+
+
