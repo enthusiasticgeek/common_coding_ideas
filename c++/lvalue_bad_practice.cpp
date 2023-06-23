@@ -1,5 +1,9 @@
 //https://www.scaler.com/topics/cpp/lvalue-and-rvalue/
 //https://en.cppreference.com/w/cpp/language/rule_of_three
+#include <cstddef>
+#include <cstring>
+#include <iostream>
+
 class A {
     int* arr;
     int size;
