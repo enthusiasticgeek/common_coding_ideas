@@ -61,15 +61,6 @@ public:
     }
 };
 
-int main() {
-    A obj(100000);
-    A obj1(obj);
-    A obj2 = std::move(obj);
-    obj1 = std::move(obj2);
-    return 0;
-}
-
-
 int main()
 {
     A obj(100000);
