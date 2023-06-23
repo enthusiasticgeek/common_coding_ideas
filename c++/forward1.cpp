@@ -21,6 +21,20 @@ public:
 private:
     A a1_, a2_, a3_;
 };
+
+/*
+make_unique1 function template:
+
+    This function template takes a type T and a forwarding reference U&& u.
+    It uses std::forward to forward the argument u when constructing an object of type T using new T(std::forward<U>(u)).
+    The resulting object is wrapped in a std::unique_ptr<T> and returned.
+
+make_unique2 function template:
+
+    This function template takes a type T and a parameter pack of forwarding references (U&&... u).
+    Inside the function, std::forward is used to forward each argument u in the parameter pack when constructing an object of type T using new T(std::forward<U>(u)...).
+    The resulting object is wrapped in a std::unique_ptr<T> and returned.
+*/
  
 template<class T, class U>
 std::unique_ptr<T> make_unique1(U&& u)
