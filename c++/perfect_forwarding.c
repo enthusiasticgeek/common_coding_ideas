@@ -15,17 +15,17 @@ Consequently, the version of someFunction accepting an rvalue reference is calle
 #include <iostream>
 #include <utility>
 
-template<typename T>
-void process(T&& arg) {
-    std::cout << "Processing: " << arg << std::endl;
-}
-
 void someFunction(int& value) {
-    std::cout << "Called by lvalue reference" << std::endl;
+    std::cout << "Called by lvalue reference: " << value << std::endl;
 }
 
 void someFunction(int&& value) {
-    std::cout << "Called by rvalue reference" << std::endl;
+    std::cout << "Called by rvalue reference: " << value << std::endl;
+}
+
+template<typename T>
+void process(T&& arg) {
+    someFunction(std::forward<T>(arg)); // Call someFunction with forwarded argument
 }
 
 int main() {
@@ -34,3 +34,4 @@ int main() {
     process(10); // rvalue passed, calls someFunction with rvalue reference
     return 0;
 }
+
