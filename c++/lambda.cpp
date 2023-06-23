@@ -21,6 +21,10 @@ int main()
     vector<int> v2 = {10, 2, 7, 16, 9};
 
     //  access v1 and v2 by reference
+      /*
+      By capturing v1 and v2 by reference, the lambda function pushinto can modify these vectors directly. 
+      Any changes made to v1 and v2 inside the lambda function will affect the original vectors defined in the enclosing scope.
+            */
     auto pushinto = [&] (int m)
     {
         v1.push_back(m);
