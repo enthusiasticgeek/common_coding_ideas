@@ -31,8 +31,10 @@ void wrapper1(T&& arg)
 
 int main(){
 int a = 5;
-wrapper(a);
+wrapper(a); //lvalue
+wrapper(std::move(a)); // rvalue
 std::string hello = "123";
-wrapper1(hello);
+wrapper1(hello); //lvalue
+wrapper1(std::string("456")); //rvalue
 return 0;
 }
