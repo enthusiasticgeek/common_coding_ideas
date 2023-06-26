@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 #In this example, the fibonacci_generator function is defined as a generator using the yield keyword.
 #It maintains the state of the sequence and yields the next Fibonacci number in each iteration. 
 #When next(fib_gen) is called, it resumes execution from the last yield statement, calculates the next Fibonacci number,
