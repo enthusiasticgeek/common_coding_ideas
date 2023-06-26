@@ -6,7 +6,7 @@ public:
         std::cout << "Base::Print()" << std::endl;
     }
 
-    virtual void Display() const {
+    virtual void Display() const {      //removing virtual keyword will throw compilation errors
         std::cout << "Base::Display()" << std::endl;
     }
 };
@@ -18,9 +18,9 @@ public:
     }
 
     // Error: Trying to override a non-virtual function
-    // void Display() const override {
-    //     std::cout << "Derived::Display()" << std::endl;
-    // }
+     void Display() const override {
+         std::cout << "Derived::Display()" << std::endl;
+     }
 };
 
 int main() {
