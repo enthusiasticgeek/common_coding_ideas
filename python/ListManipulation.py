@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Create an initial list
 my_list = [1, 2, 3, 4, 5]
 
@@ -36,3 +37,36 @@ print("Copied list:", copy_list)
 # Clear all items from the list
 my_list.clear()
 print("Cleared list:", my_list)
+
+# Create a list
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Splice the list to extract a portion
+portion = my_list[2:6]
+print("Spliced portion:", portion)
+
+# Splice the list to extract every second element
+every_second = my_list[::2]
+print("Every second element:", every_second)
+
+# Splice the list to extract a reversed portion
+reversed_portion = my_list[8:3:-1]
+print("Reversed portion:", reversed_portion)
+
+# Replace a portion of the list with another list
+my_list[1:4] = ['a', 'b', 'c']
+print("Modified list:", my_list)
+
+# Extend the list with another list
+extension = ['x', 'y', 'z']
+my_list.extend(extension)
+print("Extended list:", my_list)
+
+# Remove a portion of the list
+del my_list[5:8]
+print("Removed portion:", my_list)
+
+# Clear all items from the list
+my_list.clear()
+print("Cleared list:", my_list)
+
