@@ -57,6 +57,13 @@ public:
 #endif
 	
     int m;
+
+
+    ~A() {
+        // Destructor code here
+        // For example, you can release any resources or perform cleanup actions.
+        std::cout << "Destructor called for object with m = " << m << std::endl;
+    }
 };
 
 int main() {
