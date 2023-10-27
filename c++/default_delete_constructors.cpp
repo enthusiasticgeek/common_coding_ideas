@@ -11,16 +11,16 @@ public:
 
 #if DONT_USE_CUSTOM	
     // Delete the copy constructor
-    A(const A&) = default;
+    A(const A&) = default; //Change default to delete to view error
 
     // Delete the copy assignment operator
-    A& operator=(const A&) = default;
+    A& operator=(const A&) = default; //Change default to delete to view error
 
     // Delete the move constructor
-    A(A&& other) = default;
+    A(A&& other) = default; //Change default to delete to view error
 
     // Delete the move assignment constructor
-    A& operator=(A&& other) = default;
+    A& operator=(A&& other) = default; //Change default to delete to view error
 
 #else	
     // Custom constructors
